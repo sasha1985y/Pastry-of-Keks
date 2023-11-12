@@ -1,5 +1,5 @@
 import Review from './review.tsx';
-import BtnMoreComments from './btn-more-comments.tsx';
+import ShowMoreBtn from './show-more-btn.tsx';
 
 function Comments(): JSX.Element {
   return (
@@ -11,7 +11,7 @@ function Comments(): JSX.Element {
           <Review />
           <Review />
         </div>
-        <BtnMoreComments />
+        <ShowMoreBtn isComments />
       </div>
     </section>
   );

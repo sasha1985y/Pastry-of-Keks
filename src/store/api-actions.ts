@@ -71,7 +71,7 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   },
 );
 
-/*export const loginAction = createAsyncThunk<void, AuthData, {
+export const loginAction = createAsyncThunk<void, AuthData, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -82,7 +82,7 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
     saveToken(token);
     dispatch(requireAuthorization(AuthorizationStatus.Auth));
   },
-);*/
+);
 
 export const logoutAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;

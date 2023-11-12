@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Header from '../../components/header.tsx';
+import Header from '../../components/header/header.tsx';
 import Footer from '../../components/footer.tsx';
 import ReviewForm from '../../components/review-form.tsx';
 import Filtersort from '../../components/filter-sort.tsx';
