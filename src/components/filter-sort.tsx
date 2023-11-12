@@ -14,7 +14,7 @@ function Filtersort(): JSX.Element {
               <ul className="filter-sort__filter-list">
                 <li className="filter-sort__filter-item">
                   <div className="custom-toggle custom-toggle--sorting">
-                    <input type="radio" id="review-sort-1" name="review-sort" checked/>
+                    <input type="radio" id="review-sort-1" name="review-sort" defaultChecked/>
                     <label className="custom-toggle__label" htmlFor="review-sort-1">Любой</label>
                   </div>
                 </li>

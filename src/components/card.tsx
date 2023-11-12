@@ -5,12 +5,14 @@ import { AppRoute } from '../const.ts';
 type CardProps = {
   content: TProduct;
   onProductHoverHandler?: (product: TProduct | null) => void;
+  isCatalog: boolean;
 }
 
-function Card({content, onProductHoverHandler}: CardProps): JSX.Element {
+function Card({content, onProductHoverHandler, isCatalog}: CardProps): JSX.Element {
   const {
     id,
     title,
+    price,
     previewImage,
     previewImageWebp,
     isNew,
@@ -20,7 +22,7 @@ function Card({content, onProductHoverHandler}: CardProps): JSX.Element {
     ? () => onProductHoverHandler(content)
     : () => undefined;
   return (
-    <div className="card-item"
+    <div className={isCatalog ? 'card-item card-item--big' : 'card-item'}
       onMouseOver={productOnMouseOverHandler}
     >
       <a className="card-item__img-link" href="#">
@@ -37,6 +39,7 @@ function Card({content, onProductHoverHandler}: CardProps): JSX.Element {
           <use xlinkHref="#icon-like"></use>
         </svg>
       </button>
+      {isCatalog && <span className="card-item__price">{price} p</span>}
       <Link className="card-item__link" to={`${AppRoute.ProductPage}/${id}`}>
         <h3 className="card-item__title">
           <span>{title}</span>

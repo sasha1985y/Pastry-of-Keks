@@ -1,33 +1,31 @@
-//import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { TProduct } from '../../types/product-type.ts';
 import { useAppSelector, /*useAppDispatch*/ } from '../../hooks/index.ts';
-//import { FILM_COUNT_PER_STEP } from '../../const.ts';
-import Header from '../../components/header.tsx';
+import { AuthorizationStatus } from '../../const.ts';
+import Header from '../../components/header/header.tsx';
 import CardList from '../../components/card-list.tsx';
 import Footer from '../../components/footer.tsx';
 
-function Main(): JSX.Element {
+type MainProps = {
+  authorizationStatus: AuthorizationStatus;
+}
+
+function getRandomProducts(products: TProduct[]): TProduct[] {
+  const copiedProducts = [...products];
+  const shuffledProducts = copiedProducts.sort(() => 0.5 - Math.random());
+  return shuffledProducts.slice(0, 3);
+}
+
+function Main({authorizationStatus}: MainProps): JSX.Element {
   const products = useAppSelector((state) => state.products);
-  //console.log(products);
-  //const promo = useAppSelector((state) => state.promo);
-  //const {
-  //  name,
-  //  posterImage,
-  //  backgroundImage,
-  //  genre,
-  //  released,
-  //} = promo;
-  //const [showMoreCard, setShowMoreCard] = useState(FILM_COUNT_PER_STEP);
-  //const loadMore = () => {
-  //  setShowMoreCard((prev: number) => prev + FILM_COUNT_PER_STEP);
-  //};
+  const randomProducts: TProduct[] = getRandomProducts(products);
   return (
     <>
       <Helmet>
         <title>Главная</title>
       </Helmet>
       <div className="wrapper">
-        <Header />
+        <Header authorizationStatus={authorizationStatus}/>
         <main>
           <div className="hero">
             <div className="container">
@@ -46,7 +44,7 @@ function Main(): JSX.Element {
           <section className="random-main">
             <div className="container">
               <h2 className="random-main__title">кексы</h2>
-              <CardList products={products} />
+              <CardList products={randomProducts} isCatalog={false} />
             </div>
           </section>
           <section className="last-review">
@@ -104,7 +102,7 @@ function Main(): JSX.Element {
                 </li>
                 <li className="map__address">
                   <div className="custom-toggle custom-toggle--radio custom-toggle--address">
-                    <input type="radio" value="user-agreement-12" id="user-agreement-id-12" name="user-agreement" checked/>
+                    <input type="radio" value="user-agreement-12" id="user-agreement-id-12" name="user-agreement" defaultChecked/>
                     <label className="custom-toggle__label" htmlFor="user-agreement-id-12">Кондитерская 2</label>
                     <address className="custom-toggle__address">Морской пр. 2А
                       <svg className="custom-toggle__icon" width="26" height="24" aria-hidden="true">

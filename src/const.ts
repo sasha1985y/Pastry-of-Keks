@@ -20,11 +20,17 @@ enum AuthorizationStatus {
 }
 
 enum APIRoute {
-  SignIn = '/login',
+  SignIn = '/v0/keks/users/login',
   SignUp = '/sign-up',
   SignOut = '/sign-out',
   Products = '/v0/keks/products',
 }
+
+const POINTS = [
+  { name: 'Кондитерская 1', latitude: 59.970969, longitude: 30.316252},
+  { name: 'Кондитерская 2', latitude: 59.967947, longitude: 30.274708},
+  { name: 'Производство', latitude: 59.960380, longitude: 30.308725}
+];
 
 export {
   PRODUCT_COUNT_PER_STEP,
@@ -32,5 +38,6 @@ export {
   AppRoute,
   AuthorizationStatus,
   APIRoute,
+  POINTS
 };
 
